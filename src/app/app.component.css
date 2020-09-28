@@ -1,3 +1,11 @@
-p {
-  font-family: Lato;
+.drag-arrow{
+    color: #6D8187;
+}
+
+.drag-list-item, .panel-header{
+    cursor: move;
+}
+
+.panel-body{
+    min-height: 100px;
 }

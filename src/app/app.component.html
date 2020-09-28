@@ -1,4 +1,33 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div class="panel-body border-grey-light">
+        <div class="d-flex flex-column p-1" 
+          [dndList]
+          [dndModel]="listItems" 
+          [dndPlaceholder]="placeholder"
+          >
+
+            <div class="dndPlaceholder bg-dark-blue font-regular px-3 py-2 mb-1" #placeholder>
+                <span class="ml-3">Drop here</span>
+            </div>
+
+            <ng-container *ngFor="let item of listItems">
+                <div class="drag-list-item font-regular px-3 py-2"
+                    (dndMoved)="onMovedItem(item, listItems)" 
+                    [dndDraggable]
+                    [dndObject]="item"
+                    [dndType]="item.type"
+                    >
+                    <div class="d-flex flex-row justify-content-between ">
+                      <span class="d-flex">
+                          <i class="fas fa-long-arrow-alt-up drag-arrow"></i>
+                          <i class="fas fa-long-arrow-alt-down drag-arrow"></i>
+                          <span class="ml-3">{{item.name}}</span>
+                      </span>
+                      <i class="fas fa-times text-danger cursor-pointer" (click)="onRemoveAttribute(item)"></i>
+                  </div>
+                    
+                </div>
+            </ng-container>
+
+        </div>
+
+    </div>
